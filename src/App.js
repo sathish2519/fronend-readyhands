@@ -6,6 +6,7 @@ import {
 } from "react-router-dom";
 import SignIn from './Components/User/SignIn';
 import SignUp from './Components/User/SignUp';
+import 'antd/dist/reset.css';
 
 
 function App() {

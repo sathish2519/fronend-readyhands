@@ -1,43 +1,42 @@
 import React from 'react'
-// import { useHistory } from "react-router-dom";
-// import { Form, Input } from 'antd'
-import './SignIn.css'
-import Container from '../Container'
+import { useHistory } from "react-router-dom";
+import { Form, Input, Button } from 'antd'
+import './User.css'
 
 function SignIn() {
-  // const history = useHistory();
+  const history = useHistory();
 
-  // const SignupPage = () => {
-  //   history.push("/signup")
-  // }
+  const SignupPage = () => {
+    history.push("/signup")
+  }
+  const onFinish = (values) => {
+    console.log(values)
+  }
 
 
   return (
-    <div className="fixed inset-0 bg-primary -z-10 flex justify-center items-center">
-      <Container>
-        <form className="bg-secondary rounded p-6 w-72">
-          <h1 className="text-xl text-white font-semibold text-center">
-            Sign in
-          </h1>
-          <div className="flex flex-col-reverse">
-            <input
-              id="email"
-              type="text"
-              className="bg-transparent rounded border-2 border-dark-subtle focus:border-white w-full text-lg outline-none p-1 text-white peer transition"
-              placeholder="john@email.com"
-            />
-            <label
-              className="font-semibold text-dark-subtle peer-focus:text-white transition self-start"
-              htmlFor="email"
-            >
-              Email
-            </label>
-          </div>
-        </form>
-      </Container>
+    <div className='authentication'>
+      <div className="authentication-form card part2 p-3">
+        <h1 className='card-title'>Login to Continue</h1>
+        <Form layout='vertical' onFinish={onFinish}>
+          <Form.Item  className="form-2" label="Email" name="email" rules={[{ required: true }]}>
+            <Input placeholder='Email-id' />
+          </Form.Item>
+          <Form.Item label="Password" name="password" rules={[{ required: true }]}>
+            <Input type='password' placeholder='Password'  />
+          </Form.Item>
+            <Button className='primary-button' htmlType="submit">
+              Login
+            </Button>
+
+            {/* <Link to='/sigin'>Click here to Login</Link> */}
+            <p className='anchor my-7' onClick={SignupPage}>Click here to Register</p>
+        </Form>
+      </div>
     </div>
-  )}
-    
+  )
+}
+
 
 export default SignIn
 

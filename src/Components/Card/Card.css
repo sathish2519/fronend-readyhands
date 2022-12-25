@@ -1,6 +1,6 @@
 .card {
   width: 10rem;
-  height: 10rem;
+  height: 13rem;
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -41,6 +41,6 @@
 
 @media screen and (max-width: 480px){
   .card{
-    width: 14rem;
+    width: 17rem;
   }
 }

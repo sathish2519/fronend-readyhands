@@ -1,44 +1,8 @@
-/* .normal-text{
-    font-size: 1rem;
-}
-.authentication{
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.card{
-    box-shadow: 0 0 18px rgba(128, 128, 128, 0.432);
-    border-radius: 0 !important;
-}
-.card-title{
-    font-size: 1.5rem;
-    font-weight: bold;
-}
-.authentication-form{
-    width: 400px;
-    height: auto;
-}
-.ant-form-item-control-input-content{
-    border-radius: 2px solid !important;
-    border:1px solid !important;
-    height: 40px !important;
-}
-.formitem1{
-    width: 400px;
-}
-.ant-form-item-control-input-content:focus{
-    outline: none !important;
-    box-shadow: none !important;
-    border-radius: 1px solid gray !important;
-
-} */
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 
 *{
   font-family: 'Montserrat', sans-serif !important;
 }
-
 /* antd override */
 input{
   border-radius: 2px !important;
@@ -104,13 +68,16 @@ label{
   border-radius: 0 !important;
 }
 .primary-button{
-    background: linear-gradient(180deg, #fdc50f 26.71%, #fb982f 99.36%);
-    /* box-shadow: 0px 20px 24px 3px rgba(251, 161, 40, 0.42); */
-    border-radius: 34px;
-    border: none;
-    color: white;
-    font-size: 16px;
-    padding: 11px 26px 11px 26px;
+  /* background-color: #005555 !important;
+   */
+  background: linear-gradient(180deg, #fdc50f 26.71%, #fb982f 99.36%) !important;
+  border-color: #005555 !important;
+  height: 40px !important;
+  width: 200% !important;
+  color: white !important;
+  font-size: 18px !important;
+  width: max-content !important;
+  border-radius: 34px;
 }
 .full-width-button{
   width: 100% !important;
@@ -143,49 +110,45 @@ p{
    display: flex;
    align-items: center;
    justify-content: center;
-   /* background-color: #005555;
-    */
-    background-color:white
+   background-color:white;
 }
 .authentication-form{
-  width: 400px;
-  height:auto
+  width: 500px;
+  height: 70vh;
 }
 
 .authentication .card-title{
   font-size: 1.5rem;
   font-weight: bold;
-  background-color: #F5C32C;
+  background:linear-gradient(180deg, #fdc50f 26.71%, #fb982f 99.36%) !important;
   color: white !important;
   max-width: max-content !important;
   padding: 7px 15px;
   margin-left: -40px;
   border-bottom-left-radius: 10px;
 }
-
-.item1{
-    width: 400px;
+.form-1{
+  width:400px
+}
+.form-2{
+  width:400px
+}
+.part2{
+  width: 500px;
+  height: 55vh;
 }
 
-.blur {
-    position: absolute;
-    width: 22rem;
-    height: 14rem;
-    border-radius: 50%;
-    background: #edd0ff;
-    filter: blur(212px);
-    z-index: -9;
-    top: -18%;
-    left: 56%;
-    filter: blur(72px);
+@media screen and (max-width: 480px){
+  .card{
+    width: 17rem;
   }
-
-  .s-blur2 {
-    left: 14rem;
-    top: 8rem;
+  .form-2{
+    width:300px
   }
-  
-  .s-blur1 {
-    top: 13rem;
-    left: -18rem;
+  .authentication .card-title{
+    margin-left: 8px;
   }
+  .form-1{
+    width:300px
+  }
+}
