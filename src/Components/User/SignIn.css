@@ -1,0 +1,191 @@
+/* .normal-text{
+    font-size: 1rem;
+}
+.authentication{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.card{
+    box-shadow: 0 0 18px rgba(128, 128, 128, 0.432);
+    border-radius: 0 !important;
+}
+.card-title{
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+.authentication-form{
+    width: 400px;
+    height: auto;
+}
+.ant-form-item-control-input-content{
+    border-radius: 2px solid !important;
+    border:1px solid !important;
+    height: 40px !important;
+}
+.formitem1{
+    width: 400px;
+}
+.ant-form-item-control-input-content:focus{
+    outline: none !important;
+    box-shadow: none !important;
+    border-radius: 1px solid gray !important;
+
+} */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
+*{
+  font-family: 'Montserrat', sans-serif !important;
+}
+
+/* antd override */
+input{
+  border-radius: 2px !important;
+  border: 1px solid rgba(128, 128, 128, 0.521) !important;
+  height: 40px !important;
+}
+input:focus , .ant-picker{
+  outline: none !important;
+  box-shadow: none !important;
+  border: 1px solid gray !important;
+}
+label{
+  font-size: 16px !important;
+  color: black !important;
+}
+.ant-form-item{
+  margin: 10px 0 !important;; 
+}
+.ant-picker-input input{
+  border: none !important;
+}
+.ant-picker{
+  border-radius: 2px !important;
+  border: 1px solid rgba(128, 128, 128, 0.521) !important;
+  height: 40px !important;
+}
+/* Common styling */
+
+.spinner-parent{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.704);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 9999;
+}
+.spinner-border{
+  width: 5rem;
+  height: 5rem;
+  color: white !important;
+}
+
+.page-title{
+  font-size: 25px;
+  color: rgba(0, 0, 0, 0.833);
+  font-weight: bold;
+}
+.card-title{
+  font-size: 22px;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.627);
+
+}
+.normal-text{
+  font-size: 1rem;
+}
+.card{
+  box-shadow: 0 0 2px rgb(189, 188, 188);
+  border-radius: 0 !important;
+}
+.primary-button{
+    background: linear-gradient(180deg, #fdc50f 26.71%, #fb982f 99.36%);
+    /* box-shadow: 0px 20px 24px 3px rgba(251, 161, 40, 0.42); */
+    border-radius: 34px;
+    border: none;
+    color: white;
+    font-size: 16px;
+    padding: 11px 26px 11px 26px;
+}
+.full-width-button{
+  width: 100% !important;
+}
+p{
+  color: rgba(0, 0, 0, 0.673) !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.anchor{
+  color: black !important;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 16px !important;
+}
+.anchor:hover{
+  text-decoration: underline !important;
+}
+
+.cursor-pointer{
+  cursor: pointer;
+}
+
+
+/* authentication pages */
+
+.authentication{
+   height: 100vh;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   /* background-color: #005555;
+    */
+    background-color:white
+}
+.authentication-form{
+  width: 400px;
+  height:auto
+}
+
+.authentication .card-title{
+  font-size: 1.5rem;
+  font-weight: bold;
+  background-color: #F5C32C;
+  color: white !important;
+  max-width: max-content !important;
+  padding: 7px 15px;
+  margin-left: -40px;
+  border-bottom-left-radius: 10px;
+}
+
+.item1{
+    width: 400px;
+}
+
+.blur {
+    position: absolute;
+    width: 22rem;
+    height: 14rem;
+    border-radius: 50%;
+    background: #edd0ff;
+    filter: blur(212px);
+    z-index: -9;
+    top: -18%;
+    left: 56%;
+    filter: blur(72px);
+  }
+
+  .s-blur2 {
+    left: 14rem;
+    top: 8rem;
+  }
+  
+  .s-blur1 {
+    top: 13rem;
+    left: -18rem;
+  }
