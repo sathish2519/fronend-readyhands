@@ -1,4 +1,4 @@
-import {React,useState} from 'react'
+import {React} from 'react'
 import { useNavigate } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
@@ -11,41 +11,54 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import './User.css'
 import  toast from 'react-hot-toast';
 import axios from 'axios'
-import DialogContentText from "@mui/material/DialogContentText";
-import DialogTitle from "@mui/material/DialogTitle";
-import { LinearProgress } from "@mui/material";
-import { Dialog } from "@mui/material";
-import DialogContent from "@mui/material/DialogContent";
+// import DialogContentText from "@mui/material/DialogContentText";
+// import DialogTitle from "@mui/material/DialogTitle";
+// import { LinearProgress } from "@mui/material";
+// import { Dialog } from "@mui/material";
+// import DialogContent from "@mui/material/DialogContent";
+import { useDispatch } from 'react-redux';
+import { hideLoading,showLoading } from '../../Redux/alertsSlice';
 
 const theme = createTheme();
 
 function SignIn() {
 
+  // const {loading}=useSelector(state=>state.alerts)
+  // console.log(loading)
+
+  //using the reducers
+  const dispatch = useDispatch();
+
+
 
   //Navigate HOOK fOR  Routing
   const navigate = useNavigate();
-  const[loading,setLoading]=useState(false)
+  // const[loading,setLoading]=useState(false)
  
 
   //form on finish values
   const onFinish = async(values) => {
     try {
+      dispatch(showLoading());
       console.log(values);
-      setLoading(true)
+      // setLoading(true)
       const response= await axios.post('/api/user/login',values)
+      dispatch(hideLoading())
       if(response.data.success){
-        setLoading(false)
+        // setLoading(false)
         toast.success(response.data.message)
         toast("Redirecting to Home page")
         localStorage.setItem("token",response.data.data)
         navigate("/hello")
 
       }else{
-        setLoading(false)
+        // setLoading(false)
+        dispatch(hideLoading())
         toast.error(response.data.message)
       }
      } catch (error) {
-      setLoading(false)
+      // setLoading(false)
+      dispatch(hideLoading())
       console.log(error)
       toast.error("something went wrong")
      }
@@ -90,13 +103,13 @@ function SignIn() {
           <p className='anchor my-7 p-3' on onClick={()=>navigate("/signup")}><span>Click here to Register</span></p>
         </Form>
       </div>
-      <Dialog open={loading}>
+      {/* <Dialog open={loading}>
         <LinearProgress />
         <DialogTitle>{"Registering User"}</DialogTitle>
         <DialogContent>
           <DialogContentText>Processing</DialogContentText>
         </DialogContent>
-      </Dialog>
+      </Dialog> */}
     </div>
   )
 }

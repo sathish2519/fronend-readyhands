@@ -1,11 +1,11 @@
-import { React,useState } from 'react'
+import { React } from 'react'
 import { useNavigate } from "react-router-dom";
 import { Form, Input, Button } from 'antd'
-import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
-import DialogTitle from "@mui/material/DialogTitle";
-import { LinearProgress } from "@mui/material";
-import { Dialog } from "@mui/material";
+// import DialogContent from "@mui/material/DialogContent";
+// import DialogContentText from "@mui/material/DialogContentText";
+// import DialogTitle from "@mui/material/DialogTitle";
+// import { LinearProgress } from "@mui/material";
+// import { Dialog } from "@mui/material";
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
@@ -16,31 +16,36 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import './User.css'
 import axios from 'axios'
 import toast from 'react-hot-toast'
+import { useDispatch } from 'react-redux';
+import { hideLoading,showLoading } from '../../Redux/alertsSlice';
+
 
 
 const theme = createTheme();
 function SignUp() {
 
+  const dispatch=useDispatch()
   let navigate = useNavigate();
  
-  const [loading, setLoading] = useState(false);
   const onFinish = async (values) => {
-    setLoading(true)
+    // setLoading(true)
   
      try {
+      dispatch(showLoading())
       const response= await axios.post('/api/user/register',values)
       if(response.data.success){
-        setLoading(false)
+        // setLoading(false)
+        dispatch(hideLoading())
         toast.success(response.data.message)
         toast("Redirecting to login page")
         navigate("/sigin")
 
       }else{
-        setLoading(false)
+        dispatch(hideLoading())
         toast.error(response.data.message)
       }
      } catch (error) {
-      setLoading(false)
+      dispatch(hideLoading())
       toast.error("something went wrong")
      }
     // setLoading(true)
@@ -88,13 +93,13 @@ function SignUp() {
           <p className='anchor my-7 p-3' onClick={console.log("buton clicked")}><span>Click here to Login</span></p>
         </Form>
       </div>
-      <Dialog open={loading}>
+      {/* <Dialog open={loading}>
         <LinearProgress />
         <DialogTitle>{"Registering User"}</DialogTitle>
         <DialogContent>
           <DialogContentText>Processing</DialogContentText>
         </DialogContent>
-      </Dialog>
+      </Dialog> */}
     </div>
 
   )

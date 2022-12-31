@@ -11,12 +11,27 @@ import EmailVerification from './Components/User/EmailVerification';
 import {Toaster} from 'react-hot-toast'
 import ProtectedRoute from './Components/ProtectedRoute';
 import PublicRoute from './Components/PublicRoute';
+import { useSelector } from 'react-redux';
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import { LinearProgress } from "@mui/material";
+import { Dialog } from "@mui/material";
+import DialogContent from "@mui/material/DialogContent";
 
 
 function App() {
+  const {loading}=useSelector(state=>state.alerts)
   return (
     <>
       <BrowserRouter>
+     {loading&& (
+      <Dialog open={loading}>
+            <LinearProgress />
+            <DialogTitle>{"Processing"}</DialogTitle>
+            <DialogContent>
+                <DialogContentText>Please wait..</DialogContentText>
+            </DialogContent>
+        </Dialog>)}
         <Toaster
           position="top-center"
           reverseOrder={false}
