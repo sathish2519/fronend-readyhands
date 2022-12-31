@@ -16,11 +16,11 @@ function Services() {
                 {/* dark mode */}
                 <span style={{}}>Our</span>
                 <span>Services</span>
-                <spane>
+                <span>
                     Quality Home Services, On Demand
                     <br />
-                    Fair rates. Quality work. Outstanding service
-                </spane>
+                    Fair rates. Quality work. Outstanding service.
+                </span>
                 <a href={Prices} download>
                     <button className="button s-button">View Pricing</button>
                 </a>

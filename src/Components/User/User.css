@@ -79,6 +79,14 @@ label{
   width: max-content !important;
   border-radius: 34px;
 }
+.primary-button:hover {
+  background: white  !important ;
+  cursor: pointer !important;
+  border: 1px solid var(--orange)!important;
+  color: var(--orange)!important;
+
+}
+
 .full-width-button{
   width: 100% !important;
 }
@@ -114,9 +122,15 @@ p{
 }
 .authentication-form{
   width: 500px;
-  height: 70vh;
+  height: 80vh;
 }
-
+.loginform{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color:white;
+  height: 100vh!important;
+}
 .authentication .card-title{
   font-size: 1.5rem;
   font-weight: bold;
@@ -135,20 +149,28 @@ p{
 }
 .part2{
   width: 500px;
-  height: 55vh;
+  height: 70vh;
 }
-
 @media screen and (max-width: 480px){
   .card{
     width: 17rem;
   }
   .form-2{
-    width:300px
+    width:300px;
   }
   .authentication .card-title{
     margin-left: 8px;
   }
   .form-1{
     width:300px
+  }
+  .authentication-form{
+    height: 75vh;
+    padding: 2;
+  }
+  .part2{
+    width: 350px;
+    height: 65vh;
+    padding: 0 1.5em 0 1.5em
   }
 }

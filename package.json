@@ -7,16 +7,20 @@
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@iconscout/react-unicons": "^1.1.6",
+    "@mui/icons-material": "^5.11.0",
     "@mui/material": "^5.11.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "antd": "^5.1.0",
+    "axios": "^1.2.2",
     "emailjs": "^4.0.1",
     "framer-motion": "^8.0.1",
+    "otp-input-react": "^0.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^5.3.4",
+    "react-hot-toast": "^2.4.0",
+    "react-router-dom": "^6.6.1",
     "react-scripts": "5.0.1",
     "react-scroll": "^1.8.9",
     "styled-components": "^5.3.6",
@@ -50,5 +54,6 @@
     "autoprefixer": "^10.4.13",
     "postcss": "^8.4.20",
     "tailwindcss": "^3.2.4"
-  }
+  },
+  "proxy":"http://localhost:8000"
 }
