@@ -5,7 +5,7 @@ import {Link, useLocation} from 'react-router-dom'
 function Layout({ children }) {
 
     //active menu
-    const location=useLocation
+    const location=useLocation()
     //user menu array
     const usermenu = [
         {
