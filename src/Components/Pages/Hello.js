@@ -1,5 +1,6 @@
 import React,{useEffect} from 'react'
 import axios from 'axios'
+import Layout from '../Layout/Layout'
 
 
 function Hello() {
@@ -20,21 +21,16 @@ function Hello() {
 
   }
 
-
-
-
   useEffect(()=>{
-
     getData()
-    
 
   },[])
 
 
   return (
-    <div>
-      <h2>welcome to ready hands</h2>
-    </div>
+    <Layout>
+      <h1> Home Page</h1>
+    </Layout>
   )
 }
 

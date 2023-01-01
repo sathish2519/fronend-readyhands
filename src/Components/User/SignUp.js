@@ -90,7 +90,7 @@ function SignUp() {
           </Button>
 
           {/* <Link to='/sigin'>Click here to Login</Link> */}
-          <p className='anchor my-7 p-3' onClick={console.log("buton clicked")}><span>Click here to Login</span></p>
+          <p className='anchor my-7 p-3' onClick={()=>navigate("/sigin")}><span>Click here to Login</span></p>
         </Form>
       </div>
       {/* <Dialog open={loading}>
