@@ -1,6 +1,8 @@
 import { React, useState } from 'react'
 import "./Layout.css"
 import { Link, useLocation } from 'react-router-dom'
+import { setUser } from '../../Redux/userSlice'
+import { useSelector } from 'react-redux'
 
 function Layout({ children }) {
 
@@ -9,6 +11,10 @@ function Layout({ children }) {
 
     //active menu
     const location = useLocation()
+
+    //user
+    const{user}=useSelector((state)=>state.user)
+
     //user menu array
     const usermenu = [
         {
@@ -63,8 +69,9 @@ function Layout({ children }) {
                 <div className='content'>
                     <div className='header'>
                         {!collapsed ? <i className="ri-close-fill header-action-icon" onClick={() => setCollapsed(true)}></i> : <i class="ri-menu-line header-action-icon" onClick={() => setCollapsed(false)}></i>}
-                        <div className='d-flex'>
-                            <i className="ri-notification-2-line header-action-icon"></i>
+                        <div className='d-flex align-items-center px-4'>
+                            <i className="ri-notification-2-line header-action-icon mr-2 px-4"></i>
+                            <Link className='anchor' to="/profile">{user?.name}</Link>
                         </div>
                     </div>
                     <div className="body">
