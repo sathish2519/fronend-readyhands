@@ -18,7 +18,18 @@
     margin-right: 30px;
     min-height: 100%;
     padding: 10px;
-    width: 27%;
+    width: 390px;
+
+}
+.collapsed-sidebar{
+    background-color:var(--yellow);
+    border-radius: 5px;
+    box-shadow: 0 0 2px gray;
+    margin-right: 30px;
+    min-height: 100%;
+    padding: 10px;
+    /* width: 90px; */
+    /* display: none; */
 
 }
  .content{
@@ -89,6 +100,7 @@
      padding-right: -10px !important;
      padding-bottom: -10px !important;
 }
+
 
 @media screen and (max-width: 768px){
   

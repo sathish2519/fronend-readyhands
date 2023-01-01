@@ -3,9 +3,8 @@ import axios from 'axios'
 import Layout from '../Layout/Layout'
 
 
+
 function Hello() {
-
-
   const getData = async()=>{
     try {
       const response = await axios.post('/api/user/get-user-info-by-id',{},
