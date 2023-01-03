@@ -1,10 +1,13 @@
 import { React, useState } from 'react'
 import "./Layout.css"
-import { Link, useLocation } from 'react-router-dom'
-import { setUser } from '../../Redux/userSlice'
+import { Link, useLocation,useNavigate } from 'react-router-dom'
+// import { setUser } from '../../Redux/userSlice'
 import { useSelector } from 'react-redux'
 
 function Layout({ children }) {
+
+    //navigate
+    const navigate=useNavigate()
 
     //collapsed menu
     const [collapsed, setCollapsed] = useState(false)
@@ -12,10 +15,10 @@ function Layout({ children }) {
     //active menu
     const location = useLocation()
 
-    //user
-    const{user}=useSelector((state)=>state.user)
+    // Fetchin loged-in user using redux and reducers
+    const { user } = useSelector((state) => state.user)
 
-    //user menu array
+    //user usermenu array
     const usermenu = [
         {
             name: "Home",
@@ -37,13 +40,32 @@ function Layout({ children }) {
             path: "/profile",
             icon: 'ri-user-3-fill'
         },
+
+    ]
+    //user usermenu array
+    const adminmenu = [
         {
-            name: "Logout",
-            path: "/logout",
-            icon: 'ri-logout-circle-fill'
+            name: "Home",
+            path: "/hello",
+            icon: 'ri-home-3-fill'
+        },
+        {
+            name: "Users",
+            path: "/users",
+            icon: 'ri-file-list-2-fill'
+        },
+        {
+            name: "ServiceProviders",
+            path: "/service-providers",
+            icon: 'ri-service-fill'
+        },
+        {
+            name: "Profile",
+            path: "/profile",
+            icon: 'ri-user-3-fill'
         },
     ]
-    const menuRender = usermenu
+    const menuRender = user?.isAdmin ? adminmenu : usermenu //rendering based on iasadmin boolean value from db
 
 
 
@@ -52,7 +74,7 @@ function Layout({ children }) {
             <div className='d-flex layout'>
                 <div className={`${collapsed ? 'collapsed-sidebar' : 'sidebar'}`}>
                     <div className='sidebar-header'>
-                        <h1>RH</h1>
+                        <h1 className='logo'>RH</h1>
                     </div>
                     <div className="menu">
                         {menuRender.map((menu) => {
@@ -62,8 +84,14 @@ function Layout({ children }) {
 
                                 {!collapsed && <Link to={menu.path}>{menu.name}</Link>}
                             </div>
-
                         })}
+                        <div className="d-flex menu-item" onClick={()=>{
+                            localStorage.clear()
+                            navigate("/sigin")
+                        }}>
+                            <i className="ri-logout-circle-fill"></i>
+                            {!collapsed && <Link to="/sigin">Logout</Link>}
+                        </div>
                     </div>
                 </div>
                 <div className='content'>
