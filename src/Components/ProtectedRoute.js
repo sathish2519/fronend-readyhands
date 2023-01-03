@@ -27,7 +27,7 @@ function ProtectedRoute(props) {
                 console.log(response.data.data)
                 dispatch(setUser(response.data.data));
             } else {
-                  localStorage.clear()
+                localStorage.clear()
                 navigate("/");
             }
         } catch (error) {
@@ -36,7 +36,7 @@ function ProtectedRoute(props) {
             navigate("/");
         }
     };
-   
+
     useEffect(() => {
         if (!user) {
             getUser();
