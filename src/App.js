@@ -17,6 +17,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import { LinearProgress } from "@mui/material";
 import { Dialog } from "@mui/material";
 import DialogContent from "@mui/material/DialogContent";
+import ApplyServiceProvider from './Components/Pages/ApplyServiceProvider';
 
 
 function App() {
@@ -48,6 +49,12 @@ function App() {
             element={
               <ProtectedRoute>
                 <Hello></Hello>
+              </ProtectedRoute>
+            } />
+            <Route path="/apply-serviceprovider"
+            element={
+              <ProtectedRoute>
+                <ApplyServiceProvider></ApplyServiceProvider>
               </ProtectedRoute>
             } />
           <Route exact path="/emailverification"

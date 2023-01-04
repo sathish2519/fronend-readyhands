@@ -1,13 +1,14 @@
 import { React, useState } from 'react'
 import "./Layout.css"
-import { Link, useLocation,useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 // import { setUser } from '../../Redux/userSlice'
 import { useSelector } from 'react-redux'
+import toast from 'react-hot-toast';
 
 function Layout({ children }) {
 
     //navigate
-    const navigate=useNavigate()
+    const navigate = useNavigate()
 
     //collapsed menu
     const [collapsed, setCollapsed] = useState(false)
@@ -32,7 +33,7 @@ function Layout({ children }) {
         },
         {
             name: "Apply ServiceProvider",
-            path: "/apply service-provider",
+            path: "/apply-serviceprovider",
             icon: 'ri-service-fill'
         },
         {
@@ -79,18 +80,21 @@ function Layout({ children }) {
                     <div className="menu">
                         {menuRender.map((menu) => {
                             const isActive = location.pathname === menu.path
-                            return <div className={`d-flex menu-item ${isActive && "active-menu-item"}`}>
-                                <i className={menu.icon}></i>
+                          
+                            return <div   onClick={()=>navigate(menu.path)}   className={`d-flex menu-item ${isActive && "active-menu-item"}`}>
+                                <i  className={menu.icon}></i>
 
                                 {!collapsed && <Link to={menu.path}>{menu.name}</Link>}
                             </div>
                         })}
-                        <div className="d-flex menu-item" onClick={()=>{
+                        <div className="d-flex menu-item" onClick={() => {
                             localStorage.clear()
                             navigate("/sigin")
+                            toast.success("Logged out.Come back soon!")
                         }}>
                             <i className="ri-logout-circle-fill"></i>
                             {!collapsed && <Link to="/sigin">Logout</Link>}
+
                         </div>
                     </div>
                 </div>
