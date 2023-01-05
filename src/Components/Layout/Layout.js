@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 // import { setUser } from '../../Redux/userSlice'
 import { useSelector } from 'react-redux'
 import toast from 'react-hot-toast';
+import { Badge } from 'antd';
 
 function Layout({ children }) {
 
@@ -80,9 +81,9 @@ function Layout({ children }) {
                     <div className="menu">
                         {menuRender.map((menu) => {
                             const isActive = location.pathname === menu.path
-                          
-                            return <div   onClick={()=>navigate(menu.path)}   className={`d-flex menu-item ${isActive && "active-menu-item"}`}>
-                                <i  className={menu.icon}></i>
+
+                            return <div onClick={() => navigate(menu.path)} className={`d-flex menu-item ${isActive && "active-menu-item"}`}>
+                                <i className={menu.icon}></i>
 
                                 {!collapsed && <Link to={menu.path}>{menu.name}</Link>}
                             </div>
@@ -102,8 +103,14 @@ function Layout({ children }) {
                     <div className='header'>
                         {!collapsed ? <i className="ri-close-fill header-action-icon" onClick={() => setCollapsed(true)}></i> : <i class="ri-menu-line header-action-icon" onClick={() => setCollapsed(false)}></i>}
                         <div className='d-flex align-items-center px-4'>
-                            <i className="ri-notification-2-line header-action-icon mr-2 px-4"></i>
-                            <Link className='anchor' to="/profile">{user?.name}</Link>
+                        <div className='mx-3'>
+                        <Badge count={user?.UnseenNotification.length}>
+                                <i className="ri-notification-2-line header-action-icon mr-2 px-4"></i>
+                            </Badge>
+                        </div>
+                            
+
+                            <Link className='anchor mx-3' to="/profile">{user?.name}</Link>
                         </div>
                     </div>
                     <div className="body">
