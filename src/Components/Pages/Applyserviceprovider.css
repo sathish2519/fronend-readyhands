@@ -29,3 +29,6 @@ input {
   .ant-picker-content{
     width:10rem !important;
   }
+  .notification-card{
+    width: 100%;
+  }
