@@ -53,12 +53,12 @@ function Layout({ children }) {
         },
         {
             name: "Users",
-            path: "/users",
+            path: "/admin/users",
             icon: 'ri-file-list-2-fill'
         },
         {
             name: "ServiceProviders",
-            path: "/service-providers",
+            path: "/admin/service-providers",
             icon: 'ri-service-fill'
         },
         {

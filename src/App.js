@@ -19,6 +19,8 @@ import { Dialog } from "@mui/material";
 import DialogContent from "@mui/material/DialogContent";
 import ApplyServiceProvider from './Components/Pages/ApplyServiceProvider';
 import Notifications from './Components/Pages/Notifications';
+import Users from './Components/Pages/Admin/Users';
+import ServiceProviders from './Components/Pages/Admin/ServiceProviders';
 
 
 function App() {
@@ -62,6 +64,18 @@ function App() {
             element={
               <ProtectedRoute>
                 <Notifications></Notifications>
+              </ProtectedRoute>
+            } />
+             <Route path="/admin/users"
+            element={
+              <ProtectedRoute>
+                <Users></Users>
+              </ProtectedRoute>
+            } />
+            <Route path="/admin/service-providers"
+            element={
+              <ProtectedRoute>
+                <ServiceProviders></ServiceProviders>
               </ProtectedRoute>
             } />
           <Route exact path="/emailverification"
