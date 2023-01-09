@@ -4,42 +4,45 @@ import Layout from '../Layout/Layout'
 import "./Applyserviceprovider.css"
 import axios from 'axios'
 import { toast } from 'react-hot-toast'
-import { useDispatch,useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { hideLoading, showLoading } from '../../Redux/alertsSlice'
+import TextArea from 'antd/es/input/TextArea'
+import { Select } from 'antd';
 
 
 
 function ApplyServiceProvider() {
+  const Option = Select.Option;
   const dispatch = useDispatch()
-  const navigate =useNavigate()
+  const navigate = useNavigate()
   const { user } = useSelector((state) => state.user);
 
-  const onFinish=async(values) => {
+  const onFinish = async (values) => {
 
     try {
       dispatch(showLoading())
-      const response= await axios.post('/api/user/apply-service-provider',{...values,userId:user._id},
-      {
-        headers: {
+      const response = await axios.post('/api/user/apply-service-provider', { ...values, userId: user._id },
+        {
+          headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-    })
-      if(response.data.success){
+          },
+        })
+      if (response.data.success) {
         // setLoading(false)
         dispatch(hideLoading())
         toast.success(response.data.message)
         // toast("Redirecting to login page")
         navigate("/hello")
 
-      }else{
+      } else {
         dispatch(hideLoading())
         toast.error(response.data.message)
       }
-     } catch (error) {
+    } catch (error) {
       dispatch(hideLoading())
       toast.error("something went wrong")
-     }
+    }
   }
   return (
     <Layout>
@@ -63,13 +66,22 @@ function ApplyServiceProvider() {
               <Input placeholder='Phone Number'></Input>
             </Form.Item>
           </Col>
+          <Col span={8} xs={24} sm={24} lg={8}>
+            <Form.Item label="Address" name="address" rules={[{ required: true }]}  >
+              <TextArea rows={4} placeholder="Address" maxLength={1000} />
+            </Form.Item>
+          </Col>
         </Row>
         <hr></hr>
         <h1 className='card-title mt-3'>Professional Information</h1>
         <Row gutter={20}>
           <Col span={8} xs={24} sm={24} lg={8}>
             <Form.Item label="Specialization" name="specialization" rules={[{ required: true }]}  >
-              <Input placeholder='Specialization'></Input>
+              <Select className='select-option' defaultValue="---" >
+                <Option value="Electrician">Electrician</Option>
+                <Option value="Plumbing">Plumbing</Option>
+                <Option value="AC Services">AC Services</Option>
+              </Select>
             </Form.Item>
           </Col>
           <Col span={8} xs={24} sm={24} lg={8}>
@@ -89,7 +101,7 @@ function ApplyServiceProvider() {
           </Col>
         </Row>
         <div className='d-flex justify-content-end'>
-          <Button className='primary-button'  htmlType='submit'>SUBMIT</Button>
+          <Button className='primary-button' htmlType='submit'>SUBMIT</Button>
         </div>
 
       </Form>
