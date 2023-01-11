@@ -18,6 +18,7 @@ import axios from 'axios'
 import toast from 'react-hot-toast'
 import { useDispatch } from 'react-redux';
 import { hideLoading,showLoading } from '../../Redux/alertsSlice';
+import UserNavbar from '../Pages/UserNavbar';
 
 
 
@@ -52,7 +53,9 @@ function SignUp() {
 
   }
   return (
-    <div className='authentication'>
+    <>
+    <UserNavbar></UserNavbar>
+      <div className='authentication'>
       <div className="authentication-form card  p-1">
         {/* <h1 className='card-title'>Create Account</h1> */}
         <ThemeProvider theme={theme}>
@@ -101,6 +104,8 @@ function SignUp() {
         </DialogContent>
       </Dialog> */}
     </div>
+    </>
+    
 
   )
 }

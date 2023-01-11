@@ -1,0 +1,17 @@
+.usernav{
+    letter-spacing: 8px;
+    position: relative;
+    right: 250px;
+  /* left: 150px;
+  width: 200px;
+  height: 120px; */
+    margin: 0 20px;
+}
+
+.navmenu{
+    position: relative;
+    left: 200px;
+    
+
+
+}
