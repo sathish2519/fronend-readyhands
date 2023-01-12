@@ -8,6 +8,7 @@ import { setUser } from "../Redux/userSlice";
 
 function ProtectedRoute(props) {
     const { user } = useSelector((state) => state.user);
+    console.log(user)
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const getUser = async () => {
@@ -24,7 +25,6 @@ function ProtectedRoute(props) {
             );
             // dispatch(hideLoading());
             if (response.data.success) {
-                console.log(response.data.data)
                 dispatch(setUser(response.data.data));
             } else {
                 localStorage.clear()

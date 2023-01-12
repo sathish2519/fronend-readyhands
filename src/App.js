@@ -21,6 +21,7 @@ import ApplyServiceProvider from './Components/Pages/ApplyServiceProvider';
 import Notifications from './Components/Pages/Notifications';
 import Users from './Components/Pages/Admin/Users';
 import ServiceProviders from './Components/Pages/Admin/ServiceProviders';
+import Profile from './Components/Pages/ServiceProvider/Profile';
 
 
 function App() {
@@ -76,6 +77,12 @@ function App() {
             element={
               <ProtectedRoute>
                 <ServiceProviders></ServiceProviders>
+              </ProtectedRoute>
+            } />
+            <Route path="/serviceprovider/profile/:userId"
+            element={
+              <ProtectedRoute>
+                <Profile></Profile>
               </ProtectedRoute>
             } />
           <Route exact path="/emailverification"

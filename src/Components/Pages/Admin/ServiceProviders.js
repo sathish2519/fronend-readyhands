@@ -36,22 +36,45 @@ function ServiceProviders() {
         }
 
     }
+    const changestatus = async (record, status) => {
+
+        try {
+            dispatch(showLoading())
+            const response = await axios.post('/api/admin/change-status', { serviceId: record._id, status:status }, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("token")}`,
+                },
+            })
+            dispatch(hideLoading())
+            if (response.data.success) {
+                console.log(response.data.data)
+                getallusers()
+                toast.success(response.data.message)
+            }
+            dispatch(hideLoading())
+        } catch (error) {
+            toast.error("Something Went Wrong")
+            console.log(error)
+
+        }
+
+    }
 
     useEffect(() => {
 
         getallusers()
 
-    }, [])
+    },[])
 
     const columns = [
         {
             title: "Name",
             dataIndex: "name",
             render: (text, record) => <Card
-            style={{
-                border: 'none',
+                style={{
+                    border: 'none',
 
-            }}
+                }}
             >
                 <p>{record.firstname} {record.lastname}</p>
 
@@ -60,7 +83,7 @@ function ServiceProviders() {
         {
             title: "Phone",
             dataIndex: "phonenumber"
-            
+
         },
         {
             title: "Experience",
@@ -82,8 +105,8 @@ function ServiceProviders() {
             title: "Actions",
             dataIndex: "actions",
             render: (text, record) => (<div className='d-flex'>
-                {record.status==="pending" && (<p className='anchor justify-content-evenly'>Approve</p>) }
-                {record.status==="approved" && (<p className='anchor justify-content-evenly'>Block</p>) }
+                {record.status === "pending" && (<p className='anchor justify-content-evenly' onClick={() => changestatus(record, "approved")}  >Approve</p>)}
+                {record.status === "approved" && (<p className='anchor justify-content-evenly' onClick={() => changestatus(record, "pending")}>Block</p>)}
             </div>)
         }
     ]

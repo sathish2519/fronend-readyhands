@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import Layout from '../Layout/Layout'
 import { Card } from 'antd'
-import "./Applyserviceprovider.css"
+import "../ApplyForm/Applyserviceprovider.css"
 import { toast } from 'react-hot-toast'
 import axios from 'axios'
 import { setUser } from '../../Redux/userSlice'

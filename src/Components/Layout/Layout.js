@@ -19,6 +19,7 @@ function Layout({ children }) {
 
     // Fetchin loged-in user using redux and reducers
     const { user } = useSelector((state) => state.user)
+    console.log(user)
 
     //user usermenu array
     const usermenu = [
@@ -44,7 +45,7 @@ function Layout({ children }) {
         },
 
     ]
-    //user usermenu array
+    //user adminmenu array
     const adminmenu = [
         {
             name: "Home",
@@ -67,7 +68,32 @@ function Layout({ children }) {
             icon: 'ri-user-3-fill'
         },
     ]
-    const menuRender = user?.isAdmin ? adminmenu : usermenu //rendering based on iasadmin boolean value from db
+
+    const spmenu = [
+        {
+            name: "Home",
+            path: "/hello",
+            icon: 'ri-home-3-fill'
+        },
+        {
+            name: "Appointments",
+            path: "/appointments",
+            icon: 'ri-file-list-2-fill'
+        },
+        {
+            name: "Profile",
+            path: `/serviceprovider/profile/${user?._id}`,
+            icon: 'ri-user-3-fill'
+        },
+
+    ]
+    
+
+
+
+
+
+    const menuRender = user?.isAdmin ? adminmenu : user?.isServiceProvider ? spmenu :   usermenu //rendering based on iasadmin,isServiceProvider boolean value from db
 
 
 
