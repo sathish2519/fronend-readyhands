@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate, useParams } from 'react-router-dom'
 import ApplyForm from '../../ApplyForm/ApplyForm'
 import { hideLoading, showLoading } from '../../../Redux/alertsSlice'
+import dayjs from 'dayjs'
 
 function Profile() {
     const [providers, setprovider] = useState(null)
@@ -14,11 +15,17 @@ function Profile() {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const { user } = useSelector((state) => state.user);
+
+
     const onFinish = async (values) => {
+        // const starttime = moment(values.starttimings[0]).format("HH:mm")
+        // const endtime = moment(values.endtimings[0]).format("HH:mm")
 
         try {
             dispatch(showLoading())
-            const response = await axios.post('/api/serviceprovider/update-serviceprovider', { ...values, userId: user?._id },
+            const response = await axios.post('/api/serviceprovider/update-serviceprovider', {
+                ...values, timings:[dayjs(values.timings[0]).format("HH:mm"),dayjs(values.timings[1]).format("HH:mm")] , userId: user?._id
+            },
                 {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -46,7 +53,7 @@ function Profile() {
             const response = await axios.post(
                 "/api/serviceprovider/get-serviceprovider-info-by-id",
                 // {userId:params.userId},
-                {userId:user?._id},
+                { userId: user?._id },
                 {
                     headers: {
                         Authorization: `Bearer ${localStorage.getItem("token")}`,
@@ -56,6 +63,7 @@ function Profile() {
             dispatch(hideLoading());
             if (response.data.success) {
                 setprovider(response.data.data)
+                console.log(response.data.data)
             }
         } catch (error) {
             dispatch(hideLoading());
@@ -70,7 +78,7 @@ function Profile() {
         <Layout>
             <h1 className='page-title'>Service Provider Profile Page</h1>
             <hr></hr>
-           { providers &&<ApplyForm onFinish={onFinish} initialvalues={providers}></ApplyForm>} 
+            {providers && <ApplyForm onFinish={onFinish} initialvalues={providers}></ApplyForm>}
         </Layout>
     )
 }

@@ -10,6 +10,8 @@ import { hideLoading, showLoading } from '../../Redux/alertsSlice'
 // import TextArea from 'antd/es/input/TextArea'
 // import { Select } from 'antd';
 import ApplyForm from '../ApplyForm/ApplyForm'
+import moment from 'moment';
+import dayjs from 'dayjs'
 
 
 
@@ -20,10 +22,20 @@ function ApplyServiceProvider() {
   const { user } = useSelector((state) => state.user);
 
   const onFinish = async (values) => {
+    console.log(values)
+
+    // const starttimings =
+    // const endtimings = 
+    // console.log(starttime, endtime)
+
+    // const formattedtime = []
+    // formattedtime.push(starttime, endtime)
+    // console.log(formattedtime)
+    // starttimings:[dayjs(values.starttimings).format("HH:mm")],endtimings:[dayjs(values.endtimings).format("HH:mm")]
 
     try {
       dispatch(showLoading())
-      const response = await axios.post('/api/user/apply-service-provider', { ...values, userId: user._id },
+      const response = await axios.post('/api/user/apply-service-provider', { ...values,timings:[dayjs(values.timings[0]).format("HH:mm"),dayjs(values.timings[1]).format("HH:mm")], userId: user._id, },
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,

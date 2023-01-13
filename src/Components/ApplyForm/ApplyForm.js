@@ -9,11 +9,21 @@ import "./Applyserviceprovider.css"
 // import { hideLoading, showLoading } from '../../Redux/alertsSlice'
 import TextArea from 'antd/es/input/TextArea'
 import { Select } from 'antd';
+import moment from 'moment/moment';
+import dayjs from 'dayjs';
 
-function ApplyForm({onFinish,initialvalues}) {
+
+function ApplyForm({ onFinish, initialvalues }) {
     const Option = Select.Option;
     return (
-        <Form layout='vertical' onFinish={onFinish} initialValues={initialvalues} >
+        <Form layout='vertical' onFinish={onFinish} initialValues={{
+            ...initialvalues, ...(initialvalues && {
+                timings: [
+                    dayjs(initialvalues?.timings[0], "HH:mm"),
+                    dayjs(initialvalues?.timings[1], "HH:mm")
+                ]
+            })
+        }} >
             <h1 className='card-title mt-3'>Personal Information</h1>
             <Row gutter={20}>
                 <Col span={8} xs={24} sm={24} lg={8}>
@@ -60,10 +70,20 @@ function ApplyForm({onFinish,initialvalues}) {
                     </Form.Item>
                 </Col>
                 {/* <Col span={8} xs={24} sm={24} lg={8}>
-                    <Form.Item label="Timings" name="timings" rules={[{ required: true }]}  >
-                        <TimePicker.RangePicker />
+                    <Form.Item label=" Start Timings" name="starttimings" rules={[{ required: true }]}  >
+                        <TimePicker format="HH:mm" />
+                    </Form.Item>
+                </Col>
+                <Col span={8} xs={24} sm={24} lg={8}>
+                    <Form.Item label=" End Timings" name="endtimings" rules={[{ required: true }]}  >
+                        <TimePicker format="HH:mm" />
                     </Form.Item>
                 </Col> */}
+                <Col span={8} xs={24} sm={24} lg={8}>
+                    <Form.Item label="Timings" name="timings" rules={[{ required: true }]}  >
+                        <TimePicker.RangePicker format="HH:mm" />
+                    </Form.Item>
+                </Col>
             </Row>
             <div className='d-flex justify-content-end'>
                 <Button className='primary-button' htmlType='submit'>SUBMIT</Button>

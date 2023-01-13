@@ -94,6 +94,7 @@ function Layout({ children }) {
 
 
     const menuRender = user?.isAdmin ? adminmenu : user?.isServiceProvider ? spmenu :   usermenu //rendering based on iasadmin,isServiceProvider boolean value from db
+    const role=user?.isAdmin ?"Admin":user?.isServiceProvider?"Service Provider":"User"
 
 
 
@@ -103,6 +104,7 @@ function Layout({ children }) {
                 <div className={`${collapsed ? 'collapsed-sidebar' : 'sidebar'}`}>
                     <div className='sidebar-header'>
                         <h1 className='logo'>RH</h1>
+                        <h1 className='role'>{role}</h1>
                     </div>
                     <div className="menu">
                         {menuRender.map((menu) => {
