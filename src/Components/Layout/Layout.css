@@ -124,7 +124,9 @@ label {
   border: 1px solid rgba(128, 128, 128, 0.521) !important;
   height: 80px !important;
 }
-
+.cursor-pointer{
+  cursor: pointer;
+}
 @media screen and (max-width: 768px) {
   .menu {
     padding: 0 5px;
