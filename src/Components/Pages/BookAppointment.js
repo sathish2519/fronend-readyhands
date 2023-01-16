@@ -10,7 +10,7 @@ import { hideLoading, showLoading } from '../../Redux/alertsSlice'
 import { Button, Col, DatePicker, Row, TimePicker } from 'antd'
 
 function BookAppointment() {
-    const style={
+    const style = {
         color: "white",
         background: 'black',
     }
@@ -50,6 +50,36 @@ function BookAppointment() {
     }, []);
 
 
+    const booknow = async () => {
+        try {
+            dispatch(showLoading())
+            const response = await axios.post(
+                "/api/user/bookappointment",
+                {
+                    providerId: params.providerId,
+                    userId: user._id,
+                    userinfo:user,
+                    providerinfo:providers,
+                    date: date,
+                    selectedtime: selectedtime
+                },
+                // { userId: user?._id },
+                {
+                    headers: {
+                        Authorization: `Bearer ${localStorage.getItem("token")}`,
+                    },
+                }
+            );
+            dispatch(hideLoading());
+            if (response.data.success) {
+               toast.success(response.data.message);
+            }
+        } catch (error) {
+            dispatch(hideLoading());
+            toast.error("Eror booking appointment")
+        }
+    }
+
 
     return (
         <Layout>
@@ -63,9 +93,10 @@ function BookAppointment() {
                     <Row>
                         <Col span={8} xs={24} sm={24} lg={8}>
                             <div className='d-flex flex-column mt-2'>
-                                <DatePicker format="DD-MM-YY" />
-                                <TimePicker format="HH:mm" className='mt-3'></TimePicker>
-                                <Button className='primary-button mt-3 full-width-button' style={style}>Check for Availability</Button>
+                                <DatePicker format="DD-MM-YY" onChange={(value) => setdate(dayjs(value).format('DD-MM-YYYY'))} />
+                                <TimePicker format="HH:mm" className='mt-3' onChange={(value) => setselectedtime(dayjs(value).format("HH:mm"))}></TimePicker>
+                                <Button className='primary-button mt-3 full-width-button' >Check for Availability</Button>
+                                <Button className='primary-button mt-3 full-width-button'   onClick={booknow} >Book Now</Button>
                             </div>
 
                         </Col>
