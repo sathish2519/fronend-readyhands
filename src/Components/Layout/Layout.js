@@ -30,7 +30,7 @@ function Layout({ children }) {
         },
         {
             name: "Appointments",
-            path: "/book-appointment/:providerId",
+            path: "/appointments",
             icon: 'ri-file-list-2-fill'
         },
         {
@@ -77,7 +77,7 @@ function Layout({ children }) {
         },
         {
             name: "Appointments",
-            path: "/appointments",
+            path: "",
             icon: 'ri-file-list-2-fill'
         },
         {

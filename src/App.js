@@ -23,6 +23,8 @@ import Users from './Components/Pages/Admin/Users';
 import ServiceProviders from './Components/Pages/Admin/ServiceProviders';
 import Profile from './Components/Pages/ServiceProvider/Profile';
 import BookAppointment from './Components/Pages/BookAppointment';
+import Appointment from './Components/Pages/Appointment';
+import RHHomeSP from './Components/Pages/RHHomeSP.JS';
 
 
 function App() {
@@ -91,6 +93,16 @@ function App() {
               <ProtectedRoute>
                 <BookAppointment></BookAppointment>
               </ProtectedRoute>
+            } />
+             <Route path="/appointments"
+            element={
+              <ProtectedRoute>
+                <Appointment/>
+              </ProtectedRoute>
+            } />
+            <Route path="/home-sp"
+            element={
+                <RHHomeSP/>
             } />
           <Route  path="/emailverification"
             element={<EmailVerification></EmailVerification>} />
