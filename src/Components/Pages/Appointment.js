@@ -66,8 +66,7 @@ function Appointment() {
       dataIndex: "createdAt",
       render: (text, appointment) => (
         <span>
-         {(dayjs(appointment.date).format("DD-MM-YYYY"))}
-          {(dayjs(appointment.selectedtime).format("HH:mm"))}
+         {(dayjs(appointment.date).format("DD-MM-YYYY"))} | {(dayjs(appointment.selectedtime).format("HH:mm"))}
         </span>
       ),
     },
