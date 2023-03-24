@@ -25,6 +25,7 @@ import Profile from './Components/Pages/ServiceProvider/Profile';
 import BookAppointment from './Components/Pages/BookAppointment';
 import Appointment from './Components/Pages/Appointment';
 import RHHomeSP from './Components/Pages/RHHomeSP.JS';
+import ProviderAppointment from './Components/Pages/ProviderAppoinmtment';
 
 
 function App() {
@@ -103,6 +104,12 @@ function App() {
             <Route path="/home-sp"
             element={
                 <RHHomeSP/>
+            } />
+               <Route path="/appointments/providers"
+            element={
+              <ProtectedRoute>
+               <ProviderAppointment></ProviderAppointment>
+              </ProtectedRoute>
             } />
           <Route  path="/emailverification"
             element={<EmailVerification></EmailVerification>} />

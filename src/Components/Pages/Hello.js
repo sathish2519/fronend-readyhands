@@ -60,7 +60,6 @@ function Hello() {
   return (
 
     <Layout>
-      
 
         {HomeRender}
 

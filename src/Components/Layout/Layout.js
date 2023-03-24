@@ -77,7 +77,7 @@ function Layout({ children }) {
         },
         {
             name: "Appointments",
-            path: "",
+            path: "/appointments/providers",
             icon: 'ri-file-list-2-fill'
         },
         {

@@ -70,6 +70,10 @@ function Appointment() {
         </span>
       ),
     },
+    {
+      title:"Status",
+      dataIndex:"status",
+    }
   ];
 
   return (
