@@ -100,7 +100,7 @@ function ProviderAppointment() {
         title: "Actions",
         dataIndex: "status",
         render: (text, record) => (<div className='d-flex'>
-            {record.status === "pending" && (<p className='anchor justify-content-evenly' onClick={() => changeappointmentstatus(record, "approved")}  >Approve</p>)}
+            {record.status === "rejected" && (<p className='anchor justify-content-evenly' onClick={() => changeappointmentstatus(record, "approved")}  >Approve</p>)}
             {record.status === "approved" && (<p className='anchor justify-content-evenly' onClick={() => changeappointmentstatus(record, "rejected")}>Reject</p>)}
         </div>)
     }
