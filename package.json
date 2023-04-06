@@ -62,5 +62,5 @@
     "postcss": "^8.4.20",
     "tailwindcss": "^3.2.4"
   },
-  "proxy": "http://localhost:8000"
+  "proxy": "https://backend-readyhands-2023.onrender.com"
 }
