@@ -38,11 +38,11 @@ function Layout({ children }) {
             path: "/apply-serviceprovider",
             icon: 'ri-service-fill'
         },
-        {
-            name: "Profile",
-            path: "/profile",
-            icon: 'ri-user-3-fill'
-        },
+        // {
+        //     name: "Profile",
+        //     path: "/profile",
+        //     icon: 'ri-user-3-fill'
+        // },
 
     ]
     //user adminmenu array
@@ -62,11 +62,11 @@ function Layout({ children }) {
             path: "/admin/service-providers",
             icon: 'ri-service-fill'
         },
-        {
-            name: "Profile",
-            path: "/profile",
-            icon: 'ri-user-3-fill'
-        },
+        // {
+        //     name: "Profile",
+        //     path: "/profile",
+        //     icon: 'ri-user-3-fill'
+        // },
     ]
 
     const spmenu = [

@@ -30,7 +30,7 @@ function Services() {
             <div className="cards">
                 {/* first card */}
                 <motion.div
-                    initial={{ left: "25rem" }}
+                   initial={{ left: "-3rem", top: "0rem" }}
                     whileInView={{ left: "14rem" }}
                     transition={transition}
                 >
@@ -42,8 +42,8 @@ function Services() {
                 </motion.div>
                 {/* second card */}
                 <motion.div
-                    initial={{ left: "-11rem", top: "12rem" }}
-                    whileInView={{ left: "-4rem" }}
+                    initial={{ left: "30rem", top: "0rem" }}
+                    whileInView={{ left: "1rem" }}
                     transition={transition}
                 >
                     <Card
@@ -53,8 +53,8 @@ function Services() {
                     />
                 </motion.div>
                 <motion.div
-                    initial={{ top: "19rem", left: "25rem" }}
-                    whileInView={{ left: "12rem" }}
+                     initial={{ left: "-3rem", top: "0rem" }}
+                    whileInView={{ left: "27rem" }}
                     transition={transition}
                 >
                     <Card
