@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import "./providerappointment.css"
 
 import axios from "axios";
 import { toast } from "react-hot-toast";
@@ -99,9 +100,11 @@ function ProviderAppointment() {
     {
         title: "Actions",
         dataIndex: "status",
-        render: (text, record) => (<div className='d-flex'>
-            {record.status === "pending" && (<p className='anchor justify-content-evenly' onClick={() => changeappointmentstatus(record, "approved")}  >Approve</p>)}
+        render: (text, record) => (<div className='d-flex,container' style={{paddingLeft: '10px', paddingRight: '10px'}}>
+            {record.status === "pending" &&record.status!=="Completed" && (<p className='anchor justify-content-evenly' onClick={() => changeappointmentstatus(record, "approved")} >Approve</p>)}
             {record.status === "approved" && (<p className='anchor justify-content-evenly' onClick={() => changeappointmentstatus(record, "pending")}>Reject</p>)}
+            {record.status === "approved" && (<p className='anchor justify-content-evenly' onClick={() => changeappointmentstatus(record, "Completed")}>Complete</p>)}
+            {record.status==="Completed" &&(<p className='anchor justify-content-evenly'>Completed Service</p>)}
         </div>)
     }
   ];
