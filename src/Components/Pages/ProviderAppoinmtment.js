@@ -10,6 +10,8 @@ import moment from "moment/moment";
 import { hideLoading, showLoading } from "../../Redux/alertsSlice";
 import Layout from "../Layout/Layout";
 import dayjs from "dayjs";
+import utc from 'dayjs/plugin/utc'; // Import the UTC plugin
+dayjs.extend(utc); // Enable the UTC plugin
 
 function ProviderAppointment() {
   const [appointments, setappointments] = useState([]);
@@ -89,7 +91,8 @@ function ProviderAppointment() {
       dataIndex: "createdAt",
       render: (text, appointment) => (
         <span>
-         {(dayjs(appointment.date).format("DD-MM-YYYY"))} | {(dayjs(appointment.selectedtime).format("HH:mm"))}
+         {(dayjs(appointment.date).format("DD-MM-YYYY"))} | {dayjs.utc(appointment.selectedtime).format("h:mm a")}
+    
         </span>
       ),
     },
@@ -101,10 +104,12 @@ function ProviderAppointment() {
         title: "Actions",
         dataIndex: "status",
         render: (text, record) => (<div className='d-flex,container' style={{paddingLeft: '10px', paddingRight: '10px'}}>
-            {record.status === "pending" &&record.status!=="Completed" && (<p className='anchor justify-content-evenly' onClick={() => changeappointmentstatus(record, "approved")} >Approve</p>)}
-            {record.status === "approved" && (<p className='anchor justify-content-evenly' onClick={() => changeappointmentstatus(record, "pending")}>Reject</p>)}
+            {record.status === "pending" &&record.status!=="Completed"  && (<p className='anchor justify-content-evenly' onClick={() => changeappointmentstatus(record, "approved")} >Approve</p>)}
+            {record.status === "pending" && (<p className='anchor justify-content-evenly' onClick={() => changeappointmentstatus(record, "Rejected")}>Reject</p>)}
             {record.status === "approved" && (<p className='anchor justify-content-evenly' onClick={() => changeappointmentstatus(record, "Completed")}>Complete</p>)}
             {record.status==="Completed" &&(<p className='anchor justify-content-evenly'>Completed Service</p>)}
+            {record.status==="Rejected" &&(<p className='anchor justify-content-evenly'>Rejected Service</p>)}
+            
         </div>)
     }
   ];

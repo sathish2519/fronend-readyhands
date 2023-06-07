@@ -9,6 +9,8 @@ import moment from "moment/moment";
 import { hideLoading, showLoading } from "../../Redux/alertsSlice";
 import Layout from "../Layout/Layout";
 import dayjs from "dayjs";
+import utc from 'dayjs/plugin/utc'; // Import the UTC plugin
+dayjs.extend(utc); // Enable the UTC plugin
 
 function Appointment() {
   const [appointments, setappointments] = useState([]);
@@ -66,7 +68,8 @@ function Appointment() {
       dataIndex: "createdAt",
       render: (text, appointment) => (
         <span>
-         {(dayjs(appointment.date).format("DD-MM-YYYY"))} | {(dayjs(appointment.selectedtime).format("HH:mm"))}
+         {(dayjs(appointment.date).format("DD-MM-YYYY"))} | {dayjs.utc(appointment.selectedtime).format("h:mm a")}
+    
         </span>
       ),
     },

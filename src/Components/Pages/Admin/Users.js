@@ -55,13 +55,13 @@ function Users() {
       title:"Created on",
       dataIndex:"createdAt"
     },
-    {
-      title:"Actions",
-      dataIndex:"actions",
-      render:(text, record) => (<div className='d-flex'>
-        <div className='anchor'>View</div>
-      </div>)
-    }
+    // {
+    //   title:"Actions",
+    //   dataIndex:"actions",
+    //   render:(text, record) => (<div className='d-flex'>
+    //     <div className='anchor'>View</div>
+    //   </div>)
+    // }
   ]
 
 
